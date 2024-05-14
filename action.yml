@@ -38,6 +38,31 @@ runs:
       with:
         repository: inkarkat/git-extensions
         path: git-extensions
+    - name: Checkout shell-filter-effect
+      uses: actions/checkout@v4
+      with:
+        repository: inkarkat/shell-filter-effect
+        path: shell-filter-effect
+    - name: Checkout headers
+      uses: actions/checkout@v4
+      with:
+        repository: inkarkat/headers
+        path: headers
+    - name: Checkout executionMarker
+      uses: actions/checkout@v4
+      with:
+        repository: inkarkat/executionMarker
+        path: executionMarker
+    - name: Checkout miniDB
+      uses: actions/checkout@v4
+      with:
+        repository: inkarkat/miniDB
+        path: miniDB
+    - name: Checkout shell-scripting
+      uses: actions/checkout@v4
+      with:
+        repository: inkarkat/shell-scripting
+        path: shell-scripting
     - id: check
       env:
         MESSAGE: ${{ inputs.message }}
@@ -46,7 +71,10 @@ runs:
         FAIL_ON_DIFFERENCES: ${{ inputs.fail-on-differences }}
       run: |
         git config --global --add include.path "${GITHUB_WORKSPACE}/git-extensions/gitconfig"
-        PATH="${GITHUB_WORKSPACE}/git-extensions/bin:${PATH}"
+        for dependencyProject in git-extensions shell-filter-effect headers executionMarker miniDB shell-scripting
+        do
+          PATH="${GITHUB_WORKSPACE}/${dependencyProject}/bin:${PATH}"
+        done
 
         typeset -ar statusToBoolean=(true false)
         case "$FAIL_ON_DIFFERENCES" in
