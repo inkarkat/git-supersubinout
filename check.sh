@@ -13,7 +13,7 @@ case "$FAIL_ON_DIFFERENCES" in
 esac
 typeset -ar statusToMessage=('Differences found between superproject and submodule(s)' 'No differences found between superproject and submodule(s)' 'An unexpected error occurred')
 
-ansiLogs="$(git-supersubinout --color=always ${MESSAGE:+--message "$MESSAGE"} ${SUPER_BASE:+--super-base "$SUPER_BASE"} ${SUBMODULE_BASE:+--submodule-base "$SUBMODULE_BASE"})"; status=$?
+ansiLogs="$(GIT_SUPERSUBINOUT_MESSAGE_SINK='&1' git-supersubinout --color=always ${MESSAGE:+--message "$MESSAGE"} ${SUPER_BASE:+--super-base "$SUPER_BASE"} ${SUBMODULE_BASE:+--submodule-base "$SUBMODULE_BASE"})"; status=$?
 logs="$(printf '%s\n' "$ansiLogs" | noansi)"
 markdownLogs="$(printf '%s\n' "$ansiLogs" | ansi2markdown)"
 
