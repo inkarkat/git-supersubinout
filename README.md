@@ -16,7 +16,7 @@ By running this action every night, you can catch such discrepancies early, and 
   with:
     submodules: recursive # Need to fetch the submodules as well
     fetch-depth: 0  # Need the full history for the submodule comparison
-- uses: inkarkat/git-supersubinout@master
+- uses: inkarkat/git-supersubinout@v1
   id: supersubinout
   with:
     fail-on-differences: true # If you want to fail the build (vs. just checking whether there are differences)
