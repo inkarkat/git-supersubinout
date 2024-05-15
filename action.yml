@@ -1,6 +1,6 @@
 name: Alert about super-submodule reference differences
 description: |
-  This action shows incoming and outgoing commit logs between the commit recorded in the superproject [in SUPER-COMMIT] for each submodule and that submodule's master branch [or SUB-BRANCH].
+  This action checks for and logs commit discrepancies between the superproject reference and each submodule's default branch.
 inputs:
   message:
     description: >
