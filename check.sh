@@ -17,8 +17,10 @@ ansiLogs="$(git-supersubinout --color=always ${MESSAGE:+--message "$MESSAGE"} ${
 logs="$(printf '%s\n' "$ansiLogs" | noansi)"
 markdownLogs="$(printf '%s\n' "$ansiLogs" | ansi2markdown)"
 
-printf 'differences-found=%s\nlogs<<EOF\n%s\nEOF\nmarkdown-logs<<EOF\n%s\nEOF\n' \
-    "${statusToBoolean[$status]:-false}" "$logs" "$markdownLogs" \
+printf '%s=%s\n%s<<EOF\n%s\nEOF\n%s<<EOF\n%s\nEOF\n' \
+    "$OUTPUT_DIFFERENCES_FOUND" "${statusToBoolean[$status]:-false}" \
+    "$OUTPUT_LOGS" "$logs" \
+    "$OUTPUT_MARKDOWN_LOGS" "$markdownLogs" \
     >> "$GITHUB_OUTPUT"
 printf '::%s::%s\n' "${statusToAnnotation[$status]:-error}" "${statusToMessage[$status]:-${statusToMessage[2]}}"
 exit ${statusToFinalStatus[$status]:-$status}

@@ -83,6 +83,9 @@ runs:
         SUPER_BASE: ${{ inputs.super-base }}
         SUBMODULE_BASE: ${{ inputs.submodule-base }}
         FAIL_ON_DIFFERENCES: ${{ inputs.fail-on-differences }}
+        OUTPUT_DIFFERENCES_FOUND: differences-found
+        OUTPUT_LOGS: logs
+        OUTPUT_MARKDOWN_LOGS: markdown-logs
       run: |
         git config --global --add include.path "${GITHUB_WORKSPACE}/git-extensions/gitconfig"
         for dependencyProject in git-extensions shell-converters shell-filters shell-filter-effect headers executionMarker miniDB shell-scripting
