@@ -13,8 +13,12 @@ case "$FAIL_ON_DIFFERENCES" in
 esac
 typeset -ar statusToMessage=('Differences found between superproject and submodule(s)' 'No differences found between superproject and submodule(s)' 'An unexpected error occurred')
 
-logs="$(git-supersubinout ${MESSAGE:+--message "$MESSAGE"} ${SUPER_BASE:+--super-base "$SUPER_BASE"} ${SUBMODULE_BASE:+--submodule-base "$SUBMODULE_BASE"})"; status=$?
+ansiLogs="$(git-supersubinout --color=always ${MESSAGE:+--message "$MESSAGE"} ${SUPER_BASE:+--super-base "$SUPER_BASE"} ${SUBMODULE_BASE:+--submodule-base "$SUBMODULE_BASE"})"; status=$?
+logs="$(printf '%s\n' "$ansiLogs" | noansi)"
+markdownLogs="$(printf '%s\n' "$ansiLogs" | ansi2markdown)"
 
-printf 'differences-found=%s\nlogs<<EOF\n%s\nEOF\n' "${statusToBoolean[$status]:-false}" "$logs" >> "$GITHUB_OUTPUT"
+printf 'differences-found=%s\nlogs<<EOF\n%s\nEOF\nmarkdown-logs<<EOF\n%s\nEOF\n' \
+    "${statusToBoolean[$status]:-false}" "$logs" "$markdownLogs" \
+    >> "$GITHUB_OUTPUT"
 printf '::%s::%s\n' "${statusToAnnotation[$status]:-error}" "${statusToMessage[$status]:-${statusToMessage[2]}}"
 exit ${statusToFinalStatus[$status]:-$status}
