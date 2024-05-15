@@ -1,6 +1,6 @@
 name: Alert about super-submodule reference differences
 description: |
-  This action shows incoming and outgoing commit logs between the commit recorded in the superproject [in SUPER-COMMIT] for each submodule and that submodule's master branch [or SUB-BRANCH].
+  This action checks for and logs commit discrepancies between the superproject reference and each submodule's default branch.
 inputs:
   message:
     description: >
@@ -41,7 +41,7 @@ runs:
       uses: actions/checkout@v4
       with:
         repository: inkarkat/git-extensions
-        ref: 197559d2b194a24c2d5132194a0d314a2dfe64a8
+        ref: bad544e5ba68202f62f89ff60f931482e67d2989
         path: git-extensions
     - name: Checkout shell-converters
       uses: actions/checkout@v4
