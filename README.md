@@ -18,7 +18,7 @@ The action determines whether there are incoming or outgoing commit discrepancie
   with:
     submodules: recursive # Need to fetch the submodules as well
     fetch-depth: 0  # Need the full history for the submodule comparison
-- uses: inkarkat/git-supersubinout@master
+- uses: inkarkat/git-supersubinout@v3
   id: supersubinout
 - name: Check summary # Provide a job summary with the differences (if any)
   if: fromJSON(steps.supersubinout.outputs.differences-found) # Interpret string output as boolean
