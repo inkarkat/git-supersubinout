@@ -16,11 +16,6 @@ inputs:
     description: >
       Compare the recorded submodule reference with SUB-BRANCH in each submodule (default: master).
     required: false
-  fail-on-differences:
-    description: >
-      Boolean flag whether to fail the action if there are any differences between the superproject and submodule references.
-    required: false
-    default: false
 outputs:
   differences-found:
     description: >
@@ -82,7 +77,6 @@ runs:
         MESSAGE: ${{ inputs.message }}
         SUPER_BASE: ${{ inputs.super-base }}
         SUBMODULE_BASE: ${{ inputs.submodule-base }}
-        FAIL_ON_DIFFERENCES: ${{ inputs.fail-on-differences }}
         OUTPUT_DIFFERENCES_FOUND: differences-found
         OUTPUT_LOGS: logs
         OUTPUT_MARKDOWN_LOGS: markdown-logs

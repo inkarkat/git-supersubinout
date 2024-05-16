@@ -20,17 +20,13 @@ The action determines whether there are incoming or outgoing commit discrepancie
     fetch-depth: 0  # Need the full history for the submodule comparison
 - uses: inkarkat/git-supersubinout@master
   id: supersubinout
-  with:
-    fail-on-differences: true # If you want to fail the build (vs. just checking whether there are differences)
-- name: Proceed without differences # If you just want to react on the result without failing the build.
-  if: steps.supersubinout.outputs.differences-found == 'false'
-  run: echo '::notice::The build could proceed here.'
-- name: Check summary # Provide a job summary with the differences
-  if: failure()
+- name: Check summary # Provide a job summary with the differences (if any)
+  if: fromJSON(steps.supersubinout.outputs.differences-found) # Interpret string output as boolean
   run: |
     cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
     ${{ steps.supersubinout.outputs.markdown-logs }}
     EOF
+    exit 1 # If you want to fail the build (vs. just checking whether there are differences)
   shell: bash
 ```
 # Example
