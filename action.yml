@@ -36,41 +36,49 @@ runs:
       uses: actions/checkout@v4
       with:
         repository: inkarkat/git-extensions
+        ref: bad544e5ba68202f62f89ff60f931482e67d2989
         path: git-extensions
     - name: Checkout shell-converters
       uses: actions/checkout@v4
       with:
         repository: inkarkat/shell-converters
+        ref: 24c495172c76cf5c7960f91a014430da465a1754
         path: shell-converters
     - name: Checkout shell-filters
       uses: actions/checkout@v4
       with:
         repository: inkarkat/shell-filters
+        ref: 020a959c1756e53705ba884d45aa7cfbbc35a4fa
         path: shell-filters
     - name: Checkout shell-filter-effect
       uses: actions/checkout@v4
       with:
         repository: inkarkat/shell-filter-effect
+        ref: a74839e294dcc3cbf92841894dc5c44965d7b11a
         path: shell-filter-effect
     - name: Checkout headers
       uses: actions/checkout@v4
       with:
         repository: inkarkat/headers
+        ref: 437e856dce82112f1432958e9e712bee443cffe4
         path: headers
     - name: Checkout executionMarker
       uses: actions/checkout@v4
       with:
         repository: inkarkat/executionMarker
+        ref: 52b18bc0d52972e21e0c0ac9aa06eacb4c1bc348
         path: executionMarker
     - name: Checkout miniDB
       uses: actions/checkout@v4
       with:
         repository: inkarkat/miniDB
+        ref: fd3711e6bd2cd7f43cfc1dc67d57846cde182413
         path: miniDB
     - name: Checkout shell-scripting
       uses: actions/checkout@v4
       with:
         repository: inkarkat/shell-scripting
+        ref: 78d391da955957c099befdedec4e9363615db15b
         path: shell-scripting
     - id: check
       env:
