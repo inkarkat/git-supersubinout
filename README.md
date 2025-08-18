@@ -16,7 +16,7 @@ The action determines whether there are incoming or outgoing commit discrepancie
 
 ```yaml
 - name: Checkout repo
-  uses: actions/checkout@v4
+  uses: actions/checkout@v6
   with:
     submodules: recursive # Need to fetch the submodules as well
     fetch-depth: 0  # Need the full history for the submodule comparison
