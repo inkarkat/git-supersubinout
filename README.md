@@ -1,5 +1,7 @@
 # git-supersubinout
 
+_Alert about super-submodule reference differences._
+
 This action checks for and logs commit discrepancies between the superproject reference and each submodule's default branch.
 
 When a superproject is used to tie together multiple components that reside in separate repositories (but share the same development lifecycle), any changes that have been merged onto the submodule's master branch should also be referenced in the superproject's master branch.
@@ -14,11 +16,11 @@ The action determines whether there are incoming or outgoing commit discrepancie
 
 ```yaml
 - name: Checkout repo
-  uses: actions/checkout@v4
+  uses: actions/checkout@v6
   with:
     submodules: recursive # Need to fetch the submodules as well
     fetch-depth: 0  # Need the full history for the submodule comparison
-- uses: inkarkat/git-supersubinout@v3
+- uses: inkarkat/git-supersubinout@v3.0.1
   id: supersubinout
 - name: Check summary # Provide a job summary with the differences (if any)
   if: fromJSON(steps.supersubinout.outputs.differences-found) # Interpret string output as boolean
@@ -32,3 +34,7 @@ The action determines whether there are incoming or outgoing commit discrepancie
 # Example
 
 ![workflow run](workflow-run.png)
+
+# Alternatives
+
+* [Dependabot's `gitsubmodule` ecosystem](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file) can be used to keep submodules up-to-date ([example](https://stackoverflow.com/a/75078947/813602)). It automatically opens pull requests for the submodule update, not just provide a check like this action. Dependabot runs are separate from your normal GitHub workflows, and can be scheduled at most daily.

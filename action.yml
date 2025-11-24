@@ -33,52 +33,52 @@ runs:
   using: composite
   steps:
     - name: Checkout git-extensions
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         repository: inkarkat/git-extensions
-        ref: bad544e5ba68202f62f89ff60f931482e67d2989
+        ref: 1d225afd3fe47d2c3a9948f9b9f21b8994db09a9
         path: git-extensions
     - name: Checkout shell-converters
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         repository: inkarkat/shell-converters
-        ref: 24c495172c76cf5c7960f91a014430da465a1754
+        ref: 40fe9b82959c1778f16a59198b400252d0a97fe0
         path: shell-converters
     - name: Checkout shell-filters
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         repository: inkarkat/shell-filters
-        ref: 020a959c1756e53705ba884d45aa7cfbbc35a4fa
+        ref: 0a5af15b3957eb8cb360e65d35f2880b39b9be89
         path: shell-filters
     - name: Checkout shell-filter-effect
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         repository: inkarkat/shell-filter-effect
-        ref: a74839e294dcc3cbf92841894dc5c44965d7b11a
+        ref: 5270fafa57af22c36a6f0ff93c09d22eda28079d
         path: shell-filter-effect
     - name: Checkout headers
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         repository: inkarkat/headers
-        ref: 437e856dce82112f1432958e9e712bee443cffe4
+        ref: 7fa8ab17d5b0532143031da9017504a1d56384c8
         path: headers
     - name: Checkout executionMarker
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         repository: inkarkat/executionMarker
-        ref: 52b18bc0d52972e21e0c0ac9aa06eacb4c1bc348
+        ref: c9f964bf2aaec21f3bf8c43e3c217d94efd50ef9
         path: executionMarker
     - name: Checkout miniDB
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         repository: inkarkat/miniDB
-        ref: fd3711e6bd2cd7f43cfc1dc67d57846cde182413
+        ref: 254673b47e18242cfa61281f64a6c9697802a79c
         path: miniDB
     - name: Checkout shell-scripting
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         repository: inkarkat/shell-scripting
-        ref: 78d391da955957c099befdedec4e9363615db15b
+        ref: 2937536e8f18154d2371e779b8a09ae8f57cf4d3
         path: shell-scripting
     - id: check
       env:
